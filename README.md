@@ -13,7 +13,7 @@ Born from real GPU-fleet performance engineering work, genericized so any team r
 
 ## Where this fits
 
-Nine public repos, two operators, one platform. Every repo runs offline on a deterministic core and adds an optional `claude-opus-4-8` layer for the judgment call: determinism on the gate, Claude on the draft.
+Nine public repos, two operators, one platform. Every stage runs Claude (`claude-opus-4-8`) on every run. A deterministic gate verifies Claude's output before it ships: Claude does the judgment, the gate proves it.
 
 **Founder Kit**, what a founder runs on their own company:
 - Diagnose the company: [claude-startup-linter](https://github.com/cfregly/claude-startup-linter)
@@ -37,7 +37,7 @@ Nine public repos, two operators, one platform. Every repo runs offline on a det
 3. **Optimize**: `inference-model-optimize` (cross-engine bring-up orchestrator), `inference-quantize-calibrate`, `inference-spec-decode-train` / `-tune` / `-service`, `inference-decode-step-budget`, `inference-capacity-sizing`, `inference-known-good-config`.
 4. **Report & track**: `inference-perf-tune-report` (multi-page PDF renderer), `inference-perf-synthesize`, `inference-fleet-leaderboard`, `inference-value-ledger`, `evidence-bundle-init` provenance bundles, `prometheus-anchored-query` / `zymtrace-anchored-query` anchored observability queries.
 
-The bundled MCP server (`plugins/profile-and-optimize/server/`) exposes the tool surface that backs these skills. The documented bash-tool path is the fallback wherever an optional external server is missing.
+This is a Claude Code plugin: Claude operates it. The 31 skills and the bundled MCP server (`plugins/profile-and-optimize/server/`) are how Claude drives the cost work, loading a skill when your prompt matches its triggers and calling the MCP tools to run the sweep, profile, and report. The documented bash-tool path is the fallback wherever an external observability server is missing.
 
 ## Quickstart
 
@@ -80,11 +80,12 @@ The skills share a common rigor discipline: DRAFT-vs-VERDICT result labeling, fu
 
 ## Limitations
 
-The skills measure and report. They do not tune the cluster for you. Every
-number depends on hardware, precision, and engine version, which the skills
-record next to the result. The speed-of-light ceilings are datasheet values, an
-upper bound rather than a promise. The bundled MCP server is optional. The
-documented bash-tool path is the fallback.
+Claude operates the skills to measure and report. They do not tune the cluster
+for you. Every number depends on hardware, precision, and engine version, which
+the skills record next to the result. The speed-of-light ceilings are datasheet
+values, an upper bound rather than a promise. Within the plugin, the bundled MCP
+server backs the tool surface and the documented bash-tool path is the fallback
+wherever an external observability server is missing.
 
 ## License
 
