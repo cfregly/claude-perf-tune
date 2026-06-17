@@ -11,6 +11,25 @@ Born from real GPU-fleet performance engineering work, genericized so any team r
 - **See the surface in under a minute:** `make demo` prints the tool and skill surface, no GPU needed. A real perf run needs the bundled server and hardware.
 - **Production lesson it encodes:** measure against speed-of-light, label every result DRAFT until it is variance-controlled and profiled, and record the hardware, precision, and engine version next to every number.
 
+## Where this fits
+
+Nine public repos, two operators, one platform. Every repo runs offline on a deterministic core and adds an optional `claude-opus-4-8` layer for the judgment call: determinism on the gate, Claude on the draft.
+
+**Founder Kit**, what a founder runs on their own company:
+- Diagnose the company: [claude-startup-linter](https://github.com/cfregly/claude-startup-linter)
+- Build the product: [claude-prompt-to-production](https://github.com/cfregly/claude-prompt-to-production)
+- Harden the agent: [claude-agent-linter](https://github.com/cfregly/claude-agent-linter)
+- Sharpen the raise: [claude-pitch-deck-linter](https://github.com/cfregly/claude-pitch-deck-linter)
+
+**Activation System**, what a growth lead runs on a founder cohort to make activation measurable and attributable:
+- Capture the events: [claude-activation-instrument](https://github.com/cfregly/claude-activation-instrument)
+- Measure the funnel: [claude-activation-loop](https://github.com/cfregly/claude-activation-loop)
+- Operate the loop on a schedule, gated, the capstone: [claude-operator-loop](https://github.com/cfregly/claude-operator-loop)
+
+**Two shared disciplines, under both lines:**
+- Quality: [claude-deslop](https://github.com/cfregly/claude-deslop) grades every repo, the deck, the resume, and the profile.
+- **Cost: [claude-perf-tune](https://github.com/cfregly/claude-perf-tune), the cost-of-intelligence specialist (GPU-inference profiling and tuning). (this repo)**
+
 ## What this is
 
 1. **Benchmark & sweep**: `inference-perf-bench` load sweeps, `inference-tune-sweep` engine-knob exploration, `inference-model-eval` quality gates, `perf-baseline-record` / `perf-baseline-diff` regression tracking.
