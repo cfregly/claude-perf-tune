@@ -3,6 +3,9 @@
   "owner": {
     "name": "Project contributors"
   },
+  "metadata": {
+    "description": "GPU inference profiling and optimization tools with a bundled MCP server."
+  },
   "plugins": [
     {
       "name": "profile-and-optimize",
