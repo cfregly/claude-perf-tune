@@ -11,6 +11,13 @@ Born from real GPU-fleet performance engineering work, genericized so any team r
 - **See the surface in under a minute:** `make demo` prints the tool and skill surface, no GPU needed. A real perf run needs the bundled server and hardware.
 - **Production lesson it encodes:** measure against speed-of-light, label every result DRAFT until it is variance-controlled and profiled, and record the hardware, precision, and engine version next to every number.
 
+## Value bar
+
+Every benchmark result, optimization claim, and generated report starts as a candidate. It becomes
+shippable only when it is adversarially-confirmed to add value: the workload is named, the baseline is
+fair, a skeptic has tried to break the finding, and the receipt maps to lower cost, faster runtime,
+higher throughput, better reliability, or a clearer operator action.
+
 ## Where this fits
 
 This repo is part of the public Claude proof set, but it sits one layer below the startup journey.

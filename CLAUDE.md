@@ -78,6 +78,15 @@ For multi-step tasks, state a brief plan with a verify step per item. Strong
 success criteria let you loop independently. Weak criteria ("make it work")
 require constant clarification.
 
+### 5. Value Bar
+
+**Measured is not automatically valuable.**
+
+Every benchmark, report, skill change, and README claim must be adversarially-confirmed to add value
+before it is promoted. Name the workload, baseline, skeptical check, receipt, and the user-facing
+value such as lower cost, faster runtime, higher throughput, better reliability, or clearer operator
+action. If that chain is missing, label the result DRAFT or candidate.
+
 ## Working in this repo
 
 - Run `make all` before committing: smoke-test, MCP runtime smoke, doc-link

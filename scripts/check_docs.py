@@ -58,6 +58,8 @@ PLACEHOLDER_RE = re.compile(
 STALE_PHRASES = ("once this repo has a remote", "coming soon")
 MARKER_RE = re.compile(r"\b(TODO|FIXME|TBD)\b")
 DASH_RE = re.compile("[–—]")  # en dash (U+2013), em dash (U+2014)
+VALUE_BAR = "adversarially-confirmed to add value"
+VALUE_BAR_DOCS = ("AGENTS.md", "CLAUDE.md", "README.md")
 SKIP_DIRS = {".git", ".venv", "venv", "node_modules", "__pycache__",
              ".pytest_cache", ".mypy_cache", "dist", "build", "site-packages"}
 # Spans where a semicolon is legitimate (code, inline code, links, entities).
@@ -170,6 +172,15 @@ def check_semicolons(cfg: dict) -> list[str]:
     return out
 
 
+def check_value_bar() -> list[str]:
+    out: list[str] = []
+    for rel in VALUE_BAR_DOCS:
+        path = ROOT / rel
+        if path.is_file() and VALUE_BAR not in path.read_text(encoding="utf-8"):
+            out.append(f"{rel}: missing value bar {VALUE_BAR!r}")
+    return out
+
+
 def check_rule_count(cfg: dict) -> list[str]:
     mod = cfg.get("rule_module")
     if not mod:
@@ -257,6 +268,7 @@ def main() -> int:
         findings += check_doc(ROOT / d, cfg)
     findings += check_rule_count(cfg)
     findings += check_score_claims(cfg)
+    findings += check_value_bar()
     findings += check_dashes(cfg)
     findings += check_semicolons(cfg)
     if not findings:
